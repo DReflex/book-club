@@ -1,0 +1,67 @@
+body, html{
+  margin: 0;
+  padding:0;
+}
+.navbar{
+  border: 0;
+  margin-bottom: 0;
+}
+.colapse-btn{
+    margin-left:10px;
+    margin-top: 10px
+}
+.line{
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin:3px auto;
+  border-radius: 5px;
+}
+.menu{
+  position:absolute;
+  margin-top:51px;
+  margin-left: -15px;
+  height:800px;
+  width:200px;
+  background-color: rgb(87, 76, 76);
+  display: none
+}
+.profile{
+  width:100%;
+  padding:10px;
+  border-bottom:2px solid rgb(177, 185, 18);
+  display:flex;
+  flex-direction: row;
+
+}
+.profile-icon img{
+  width:50px;
+}
+.name-container{
+  margin:auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  color:white;
+}
+.name-container h3, .name-container i{
+  margin:auto;
+  padding:5px;
+  font-size: 20px;
+}
+.list i, .list h4{
+  margin-top: 10px;
+  font-size: 16px
+}
+.list{
+  width:90%;
+  display: flex;
+  margin-left:5px;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom:2px solid rgb(177, 185, 18);
+}
+.reading{
+  list-style-type: none;
+  display: show;
+}

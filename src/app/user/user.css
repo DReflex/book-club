@@ -1,0 +1,145 @@
+.user{
+  margin-top: 0;
+  width:100%;
+  background-image: url(http://cdn.pcwallart.com/images/city-road-background-wallpaper-1.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height:300px;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+}
+.overlay{
+  z-index: -1;
+  width:100%;
+  height:100%;
+  position:absolute;
+  background: linear-gradient(to right, rgba(0, 7, 105, 0.4) , rgba(5, 11, 144, 0.40));
+}
+.user-info{
+  width:30%;
+  height:100%;
+  padding-top:0;
+  bottom:0;
+  background: rgba(0, 4, 51, 0.8);
+  color:#FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+.user-info img{
+  border-radius: 50%;
+  width: 30%;
+  margin:auto;
+  background:rgb(252, 248, 212);
+
+}
+.user-data{
+  margin:auto;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.quote{
+  margin:auto;
+  color:#FFF;
+}
+.quote h1{
+  font-size: 50px;
+}
+.quote p{
+  font-size: 20px;
+  text-align: right;
+}
+.user i {
+  font-size: 18px;
+  margin:10px;
+  color:#FFF;
+}
+/*SEARCH BOX*/
+.search-box{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.input{
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width:40%;
+  margin-top:20px;
+}
+.input-book{
+  background:rgb(170, 72, 72);
+}
+.input-text{
+  width:70%;
+  font-size: 25px;
+  padding:0;
+  margin:0;
+}
+.input-book img{
+  width:40px;
+  height:auto;
+}
+.showing{
+  margin:auto;
+  margin-top: 50px;
+  width:40%;
+  display: flex;
+  justify-content:center;
+  flex-direction: row;
+}
+.showing img{
+  width:30%;
+  height:auto;
+}
+.showing-1{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.list-container{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+.book-list{
+  margin-top: 50px;
+}
+.book-list h2{
+  margin: auto;
+  text-align: center;
+  margin-bottom:20px;
+}
+.my-books{
+  width:50%;
+  display: flex;
+  flex-direction: column;
+}
+.single-book{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.single-book img{
+  width:auto;
+  height:100px;
+}
+.my-list{
+  width:50%;
+  display: flex;
+  flex-direction: column;
+}
+.active{
+  width:15px;
+  height:15px;
+  border-radius: 50%;
+  background:rgb(52, 163, 0);
+}
