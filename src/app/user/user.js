@@ -44,16 +44,6 @@ class Uesr extends React.Component {
       <div className="book-list">
         <h2>My books</h2>
         <div className="list-container">
-          <div className="my-books">
-            <div className="single-book">
-              <img src="http://www.listchallenges.com/f/items/d598393a-64c8-4af0-8a6f-2032a2ec681a.jpg" alt="none" />
-              <div className="single-detail">
-                <h3>Name</h3>
-                <h5>Author</h5>
-              </div>
-              <span><i className="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-            </div>
-          </div>
           <div className="my-list">
             <div className="single-book">
               <img src="http://www.listchallenges.com/f/items/d598393a-64c8-4af0-8a6f-2032a2ec681a.jpg" alt="none" />
