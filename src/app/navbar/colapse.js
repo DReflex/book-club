@@ -40,13 +40,7 @@ class Colapse extends React.Component{
             <li>book one</li>
             <li>book two</li>
           </ul>
-          <div className="list">
-            <h4>My books </h4><i onClick={()=> this.handleToggle('books')} className="fa fa-plus-square" aria-hidden="true"/>
-          </div>
-          <ul id="books" className="reading">
-            <li>book one</li>
-            <li>book two</li>
-          </ul>
+
         </div>
       </div>
     )

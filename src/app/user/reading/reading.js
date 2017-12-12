@@ -17,8 +17,8 @@ class Reading extends React.Component {
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#">Add Note</a></li>
-              <li><a href="#">Finish Reading</a></li>
+              <li><a href="#s">Add Note</a></li>
+              <li><a href="#s">Finish Reading</a></li>
             </ul>
           </div>
         </nav>

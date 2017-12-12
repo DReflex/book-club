@@ -1,0 +1,15 @@
+.showing-container{
+  width:80%;
+  margin:auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.showing{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left:10px;
+  text-align: left;
+}

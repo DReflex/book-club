@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const app =express();
 app.set('port', (process.env.PORT || 4000));
-var promise = mongoose.connect('mongodb://localhost/todos', {
+var promise = mongoose.connect('mongodb://localhost/book-club', {
   useMongoClient: true,
   /* other options */
 });
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 
 app.use('/api', require('./routes/api'));
-
+app.use('/api2', require('./routes/api2'));
 //init app
 //build part of the react app
 //uncoment this after npm build
