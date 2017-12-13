@@ -1,10 +1,15 @@
 import SocialButton from './login-div';
 import React from 'react';
 import { connect } from 'react-redux'
-import {userLogin} from '../../actions/index'
+import {userLogin} from '../../actions/index';
+import { withRouter } from 'react-router'
+
 
 class Login extends React.Component {
-
+  constructor(){
+    super()
+    this.handleSocialLogin = this.handleSocialLogin.bind(this)
+  }
 handleSocialLogin = (user) => {
   fetch(`/api/user/${user._profile.id}`)
   .then((res) => {
@@ -55,7 +60,10 @@ handleSocialLogin = (user) => {
       background:data.background,
     }
      this.props.dispatch(userLogin(user))
-  })
+
+
+
+  }).then(()=>this.props.history.push('/home'))
 }
 
 handleSocialLoginFailure = (err) => {
@@ -82,4 +90,4 @@ const store = (store) =>{
 
 Login = connect(store)(Login)
 
-export default Login
+export default withRouter(Login)
