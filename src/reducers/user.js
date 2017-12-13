@@ -3,7 +3,7 @@ const stateInit={
   id:Number,
   loginStatus: false,
   img:String,
-  bakcground:String,
+  background:String,
   quote: String,
   author: String,
   editing:Boolean,
@@ -18,7 +18,11 @@ const user =(state = stateInit, action) => {
       id:action.id,
       loginStatus: action.loginStatus,
       img: action.img,
-      editing:false
+      editing:false,
+      stared: action.stared,
+      author: action.author,
+      quote:action.quote,
+      background:action.background,
 
     }
     case 'LOGOUT':
@@ -28,7 +32,11 @@ const user =(state = stateInit, action) => {
        id:0,
        loginStatus:false,
        img:"",
-       editing:false
+       editing:false,
+       background:"",
+       quote: "",
+       author: "",
+       stared: []
      }
      case "PROFILE":
      return{

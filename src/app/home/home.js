@@ -4,6 +4,10 @@ import { bookList, resetList } from '../../actions/index'
 import './home.css'
 
 class Home extends React.Component {
+  componentWillMount(){
+    this.props.user.loginStatus? true : this.props.history.push('/')
+
+  }
 componentDidMount(){
   this.props.dispatch(resetList())
   fetch('/api/books').then(res=>res.json())

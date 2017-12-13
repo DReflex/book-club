@@ -6,6 +6,10 @@ import UserDetail from './user-detail';
 import UserEditing from './user-editing'
 import './user.css'
 class User extends React.Component {
+  componentWillMount(){
+    this.props.user.loginStatus? true : this.props.history.push('/')
+
+  }
   componentDidMount(){
     this.props.dispatch(r_star())
     this.props.dispatch(resetBook())
@@ -34,6 +38,7 @@ class User extends React.Component {
   }
   updateStars = () =>{
     let user = this.props.user
+    console.log(this.props.user);
     if(user.stared){
       user.stared.map((id) =>{
         fetch(`api2/books/${id}`).then(res => res.json())

@@ -2,12 +2,10 @@ import SocialButton from './login-div';
 import React from 'react';
 import { connect } from 'react-redux'
 import {userLogin} from '../../actions/index'
-import './welcome.css'
+
 class Login extends React.Component {
 
-
 handleSocialLogin = (user) => {
-  console.log("user", user);
   fetch(`/api/user/${user._profile.id}`)
   .then((res) => {
     if(res.status === 404){
@@ -15,7 +13,6 @@ handleSocialLogin = (user) => {
                 method: 'POST',
                 mode: 'CORS',
                 body: JSON.stringify({
-                  name: user._profile.firstName,
                   id: user._profile.id,
                   img:user._profile.profilePicURL,
                   nickname: user._profile.firstName
@@ -24,17 +21,40 @@ handleSocialLogin = (user) => {
                     'Content-Type': 'application/json'
                 }
             })
+
+        return undefined
+
+    }else{
+      return res
     }
 
-  }).then(()=>{
-    let data ={
-      name: user._profile.firstName,
-      id: user._profile.id,
-      loginStatus: true,
-      img: user._profile.profilePicURL
-    }
+  }).then((res) =>{
+    let data = {
+     id: user._profile.id,
+     img:user._profile.profilePicURL,
+     nickname: user._profile.firstName,
+     loginStatus: true
+   }
     console.log(data);
-   this.props.dispatch(userLogin(data))
+    if(res){
+      return res.json()
+    }else{
+      return data
+    }
+  })
+  .then((data) => {
+    let user = {
+      name:data.nickname,
+      id:data.id,
+      loginStatus: true,
+      img: data.img,
+      editing:false,
+      stared: data.stared,
+      author: data.author,
+      quote:data.quote,
+      background:data.background,
+    }
+     this.props.dispatch(userLogin(user))
   })
 }
 

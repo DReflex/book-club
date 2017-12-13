@@ -72,3 +72,17 @@ body, html{
   list-style-type: none;
   display: none;
 }
+.logout{
+  width:100px;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  color:#FFF;
+  font-size: 15px;
+  padding:15px;
+  cursor: pointer;
+}
+.logout i, .logout p{
+  margin:auto;
+}

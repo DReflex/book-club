@@ -12,6 +12,9 @@ class Book extends React.Component {
     super();
     this.test_res = this.test_res.bind(this)
   }
+  componentWillMount(){
+    this.props.user.loginStatus? true : this.props.history.push('/')
+  }
   componentDidMount(){
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api/books/${id}`).then(res => res.json())
@@ -24,7 +27,7 @@ class Book extends React.Component {
           subtitle:data.subtitle,
           img: data.imageLinks.small,
           author:data.authors[0],
-          categories:data.categories[0],
+          categories:data.categories? data.categories[0]: "no category",
           link:data.previewLink,
           desc:data.description,
           id:data.id,

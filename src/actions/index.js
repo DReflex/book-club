@@ -1,12 +1,22 @@
 
 
 export const userLogin =(data)=>{
+
   return{
     type:"LOGIN",
     img: data.img,
     name: data.name,
     id: data.id,
-    loginStatus: data.loginStatus
+    loginStatus: data.loginStatus,
+    stared: !data.stared? []: data.stared,
+    author: !data.author? "": data.author,
+    quote:!data.quote ? "": data.quote,
+    background:!data.background? "": data.background,
+  }
+}
+export const userLogout =() => {
+  return{
+    type:"LOGOUT"
   }
 }
 export const searchQuery = (search) =>{

@@ -12,8 +12,27 @@ button{outline:none}
 }
 .loginButton{
   margin:auto;
-  width:200px;
+  width:150px;
+  height:50px;
   color:#000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #3C5996;
+  border:none
+}
+.loginButton p{
+  margin:auto;
+  color:#FFF;
+  font-weight: 900;
+  font-size: 16px;
+}
+.loginButton img{
+  margin:0;
+  padding:0;
+  width:45px;
+  hieght:45px;
 }
 .welcome-body{
   margin:auto;
@@ -174,6 +193,7 @@ button{outline:none}
   width:100%;
   margin:auto;
   padding:30px 0;
+  padding-bottom:100px;
   background-color: rgb(78, 78, 78);
   display: flex;
   justify-content: center;
@@ -243,11 +263,29 @@ button{outline:none}
 .connect-buttons{
   opacity: 0;
   height:0;
+  transition: 0.5s linear;
+}
+.connect-buttons button:hover{
+  background-color:#1f479d;
 }
 .connect-show{
-  display:block;
+  display:flex;
+  margin:auto;
+  flex-direction: row;
   animation: showing 1s 2s ease both;
 
+}
+.btn-user{
+  margin:auto;
+  margin-left: 10px;
+  border:none;
+  width:100px;
+  background-color: #3C5996;
+  color:#FFF;
+  text-align: center;
+  font-weight: 900;
+  height:50px;
+  border-radius: 8px;
 }
 
 /*  //Popup animations //Button animations */
@@ -280,7 +318,7 @@ button{outline:none}
 }
 
 .tech-box:hover .box-desc{
-  animation:fadeIn .5s ease-in reverse forwards, fadeUp 1s ease-in reverse forwards
+  animation:fadeIn .5s ease-in reverse forwards, fadeUp 1s ease-in reverse
 }
 
 @keyframes flip {

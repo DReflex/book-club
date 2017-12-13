@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './login';
-import smoothscroll from 'smoothscroll'
+import smoothscroll from 'smoothscroll';
+import { connect } from 'react-redux';
 import './welcome.css'
 class Welcome extends React.Component {
   constructor(){
@@ -10,6 +11,7 @@ class Welcome extends React.Component {
   componentDidMount(){
     window.addEventListener('scroll', (e)=>this.handleScroll());
     console.log(window.innerHeight);
+    console.log(this.props.user);
   }
   componentWillUnmount() {
       document.removeEventListener("scroll", this.handleScroll);
@@ -52,7 +54,7 @@ class Welcome extends React.Component {
             <h1 className="header-h1">Welcome to Book Club</h1>
             <img className="tree" alt="tree" src="https://cdn.glitch.com/81770a35-1790-4efa-8f7a-c06945d590c2%2Fthumbnails%2Ftree-triangular-shape-with-roots%20(1).svg?1513079789794" />
             <button onClick={this.handleConnect} className="connect">Connect</button>
-            <div className="connect-buttons"> <Login /> <button>TEST1</button></div>
+            <div className="connect-buttons"> <Login /> <button className="btn-user">User1</button><button className="btn-user">User2</button></div>
             <button onClick={()=>smoothscroll(window.innerHeight,1000)} className="learn">Learn more</button>
 
 
@@ -197,6 +199,12 @@ It works on every platform, browser or device, focusing equally on reliability a
     )
   }
 }
+const store = (store) =>{
+  return {
+    user: store.user
+  }
+}
 
+Welcome = connect(store)(Welcome)
 
 export default Welcome
