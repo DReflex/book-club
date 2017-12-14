@@ -7,6 +7,7 @@ const comment = (state= stateInit, action)=>{
       {
       creator:action.creator,
       creator_id:action.creator_id,
+      creator_img:action.creator_img,
       response:action.response,
       text:action.text,
       _id:action._id,
@@ -46,12 +47,16 @@ const comment = (state= stateInit, action)=>{
         if(action.res_id === undefined){
           return{
             ...comment,
-            vote:action.vote
+            vote:action.vote,
+            up: action.up,
+            down:action.down
           }
           }else{
             comment.response.map((response) =>{
               if(response._id === action.res_id){
                 response.vote = action.vote;
+                response.up = action.up,
+                response.down = action.down
                 return response
               }else{
                 return response

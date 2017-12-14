@@ -3,9 +3,10 @@ body, html{
   padding:0;
 }
 .navbar{
+  top:0;
   border: 0;
   margin-bottom: 0;
-  z-index: 2;
+  z-index: 10;
   width:100%;
   height:50px;
   border-radius: 0;
@@ -20,12 +21,12 @@ body, html{
   color:#fac7c7;
 }
 .navbar-default .navbar-nav>li>a:hover, .logout:hover {
-  color:#FFF;
+  color:#FFF !important;
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:active,
 .navbar-default .navbar-nav>li>a:visited{
-  color:none;
+  color:#fac7c7
 }
 .logout{
   width:100px;

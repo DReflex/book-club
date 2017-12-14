@@ -20,7 +20,6 @@ class Navbar extends React.Component{
     let navbar = document.getElementById('navbar')
 
     if(this.props.location.pathname != "/"){
-      console.log(this.props.location);
       navbar.className= "navbar navbar-default navbar-rolling"
     }else{
       if(window.pageYOffset > window.innerHeight -250){

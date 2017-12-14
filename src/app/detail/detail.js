@@ -18,6 +18,7 @@ class Book extends React.Component {
   componentDidMount(){
     window.scrollTo(0, 1)
     window.scrollTo(0,0)
+
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api/books/${id}`).then(res => res.json())
     .then((res)=>{
@@ -57,7 +58,8 @@ class Book extends React.Component {
         text: this.props.input.comment,
         vote:0,
         who:[],
-        response:[]
+        response:[],
+        creator_img:user.img
       }
       }),
       headers: {
@@ -76,6 +78,7 @@ class Book extends React.Component {
         response:{
           creator:user.name,
           creator_id:user.id,
+          creator_img:user.img,
           text: text,
           vote:0,
           up:[],
@@ -106,21 +109,21 @@ class Book extends React.Component {
               up.push(this.props.user.id)
               vote ++;
               update_vote(up, down, vote)
-              this.props.dispatch(com_vote(com_id, res_id, vote));
+              this.props.dispatch(com_vote(com_id, res_id, vote, up, down));
             }else{
               console.log("filter vote down");
               let newDown = down.filter(id => id !== this.props.user.id)
               up.push(this.props.user.id)
               vote += 2;
               update_vote(up, newDown, vote)
-              this.props.dispatch(com_vote(com_id, res_id, vote));
+              this.props.dispatch(com_vote(com_id, res_id, vote, up, newDown));
             }
           }else{
             console.log("unvote up");
             let newUp = up.filter(id => id !== this.props.user.id)
             vote --;
             update_vote(newUp, down, vote)
-            this.props.dispatch(com_vote(com_id, res_id, vote));
+            this.props.dispatch(com_vote(com_id, res_id, vote, newUp, down));
           }
       }else{
         if(down.indexOf(this.props.user.id) === -1){
@@ -129,21 +132,21 @@ class Book extends React.Component {
             down.push(this.props.user.id);
             vote --;
             update_vote(up, down, vote)
-            this.props.dispatch(com_vote(com_id, res_id, vote));
+            this.props.dispatch(com_vote(com_id, res_id, vote, up, down));
             }else{
             console.log("filter vote up");
             let newUp = up.filter(id => id!== this.props.user.id)
             down.push(this.props.user.id)
             vote -=2;
             update_vote(newUp, down, vote)
-            this.props.dispatch(com_vote(com_id, res_id, vote));
+            this.props.dispatch(com_vote(com_id, res_id, vote, newUp, down));
           }
         }else{
           console.log("unvote down");
           let newDown = down.filter(id => id !== this.props.user.id)
           vote ++;
           update_vote(up, newDown, vote)
-          this.props.dispatch(com_vote(com_id, res_id, vote));
+          this.props.dispatch(com_vote(com_id, res_id, vote, up, newDown));
           }
       }
     })
@@ -214,14 +217,17 @@ class Book extends React.Component {
     let input= this.props.input
     let detail = this.props.detailBook
     let comments = this.props.comment
+    let color = (this.props.user.stared.indexOf(this.props.location.pathname.split('/')[2]) === -1)? "rgb(191, 191, 191)": "rgb(255, 177, 4)"
     return (
       (!detail.desc || !comments)? "loading":(
       <div className="book-detail">
         <div className="book-heading" >
+
           <div className="io">
+                <div className="book-overlay"></div>
             <div className="title">
-              <h2>{detail.title}:</h2>
-              <h3>{detail.subtitle}</h3>
+              <h2>{detail.title}</h2>
+              <h2>: {detail.subtitle}</h2>
             </div>
             <div className="book-content">
               <img width="150px" src={detail.img} alt="#_#" />
@@ -247,41 +253,48 @@ class Book extends React.Component {
               </div>
               </div>
             </div>
-            <span onClick={this.handleStar} className="star"><i className="fa fa-star" aria-hidden="true"></i></span>
+            <span onClick={this.handleStar} className="star"><i style={{color: color}} className="fa fa-star" aria-hidden="true"></i></span>
           </div>
 
         </div>
         <div className="comments">
           {comments.map((comment,i) =>{
+            let up = (comment.up.indexOf(this.props.user.id) === -1)? 16:20
+            let down = (comment.down.indexOf(this.props.user.id) === -1)? 16:20
             return(
-              <div key={i}>
+              <div className="single-comment" key={i}>
                 <div className="vote">
                   <div className="number"><h4>{comment.vote}</h4></div>
                   <div className="vote-option">
-                    <span onClick={()=>this.test_res(undefined, comment._id, comment.vote, "up")}><i className="fa fa-chevron-up" aria-hidden="true"></i></span>
-                    <span onClick={()=>this.test_res(undefined, comment._id, comment.vote, "down")}><i className="fa fa-chevron-down" aria-hidden="true"></i></span>
+                    <span onClick={()=>this.test_res(undefined, comment._id, comment.vote, "up")}><i style={{fontSize:up}} className="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    <span onClick={()=>this.test_res(undefined, comment._id, comment.vote, "down")}><i style={{fontSize:down}} className="fa fa-chevron-down" aria-hidden="true"></i></span>
                   </div>
                 </div>
-                <div className="author">
-                  <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-512.png" alt="profile" />
-                  <h3>{comment.creator}</h3>
+                <div className="author-container">
+                  <div className="author">
+                    <img src={comment.creator_img} alt="profile" />
+                    <h3>{comment.creator}</h3>
+                  </div>
+                  <div className="comment">
+                    <p>{comment.text}</p>
+                  </div>
                 </div>
-                <div className="comment">
-                  <p>{comment.text}</p>
-                </div>
+
                 {
                   comment.response.map((res, i) =>{
+                    let resUp = (res.up.indexOf(this.props.user.id) === -1)? 16:20
+                    let resDown = (res.down.indexOf(this.props.user.id) === -1)? 16:20
                     return(
                       <div key={i} className="response">
                         <div className="vote">
                           <div className="number"><h4>{res.vote}</h4></div>
                           <div className="vote-option">
-                            <span onClick={()=>this.test_res(res._id, comment._id, res.vote, "up")}><i className="fa fa-chevron-up" aria-hidden="true"></i></span>
-                            <span onClick={()=>this.test_res(res._id, comment._id, res.vote, "down")}><i className="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            <span onClick={()=>this.test_res(res._id, comment._id, res.vote, "up")}><i style={{fontSize:resUp}} className="fa fa-chevron-up" aria-hidden="true"></i></span>
+                            <span onClick={()=>this.test_res(res._id, comment._id, res.vote, "down")}><i style={{fontSize:resDown}} className="fa fa-chevron-down" aria-hidden="true"></i></span>
                           </div>
                         </div>
                         <div className="author">
-                          <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-512.png" alt="profile" />
+                          <img src={res.creator_img} alt="profile" />
                           <h3>{res.creator}</h3>
                         </div>
                         <div className="comment">
@@ -294,13 +307,13 @@ class Book extends React.Component {
 
               }
               { comment.showing ? (
-                <div>
-                  <input onChange={(e)=>this.queryResponse(e, comment._id)}value={comment.res_query}></input>
-                  <button onClick={()=>this.test(comment._id, comment.res_query)}>Add Response</button>
-                  <button onClick={()=>this.handleToggle(comment._id, comment.showing)}>Toggle</button>
+                <div className="reply">
+                  <textarea onChange={(e)=>this.queryResponse(e, comment._id)}value={comment.res_query}></textarea>
+                  <button className="leave-res" onClick={()=>this.test(comment._id, comment.res_query)}>Add</button>
+                  <button className="cancle" onClick={()=>this.handleToggle(comment._id, comment.showing)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
                 </div>
 
-              ) : <button onClick={()=>this.handleToggle(comment._id, comment.showing)}>Toggle</button>
+              ) : <button className="reply-button" onClick={()=>this.handleToggle(comment._id, comment.showing)}><i className="fa fa-commenting" aria-hidden="true"></i></button>
             }
 
             </div>
@@ -309,8 +322,8 @@ class Book extends React.Component {
 
         </div>
         <div className="add-comment">
-          <h3>add Comment</h3>
-          <input onChange={(e)=>this.queryComment(e)} value={input.comment}></input>
+          <h3>Leave comment</h3>
+          <textarea onChange={(e)=>this.queryComment(e)} value={input.comment}></textarea>
           <button onClick={this.handleComments}>Add Comment</button>
         </div>
 

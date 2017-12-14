@@ -10,8 +10,6 @@ class Welcome extends React.Component {
   }
   componentDidMount(){
     window.addEventListener('scroll', (e)=>this.handleScroll());
-    console.log(window.innerHeight);
-    console.log(this.props.user);
     window.scrollTo(0, 1)
     window.scrollTo(0,0)
   }

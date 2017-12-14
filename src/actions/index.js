@@ -84,7 +84,8 @@ export const addComment = (action)=>{
     up:action.up,
     down:action.down,
     vote:action.vote,
-    showing:false
+    creator_img: action.creator_img,
+    showing:false,
   }
 
 }
@@ -132,12 +133,14 @@ export const shrink_detail = () =>{
     type: "SHRINK_DETAIL"
   }
 }
-export const com_vote = (com_id, res_id,  vote) =>{
+export const com_vote = (com_id, res_id, vote, up, down) =>{
   return{
     type: "COM_VOTE",
     com_id,
     res_id,
-    vote
+    vote,
+    up,
+    down
   }
 }
 export const add_res = (id, response) =>{

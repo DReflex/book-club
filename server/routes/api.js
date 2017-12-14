@@ -83,6 +83,7 @@ router.get('/comment/:id', function(req, res, next){
 
 
 router.put('/comment/:id', function(req, res, next){
+  console.log(req.body.comments);
   Comments.findOneAndUpdate({id: req.params.id}, {$push: {comments:req.body.comments}}).then(function(){
       Comments.findOne({id: req.params.id}).then(function(schema){
       res.send(schema.comments[schema.comments.length -1]);

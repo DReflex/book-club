@@ -22,10 +22,13 @@ const CommentSchema = new Schema ({
       text:String,
       vote:Number,
       up:[],
-      down:[]
+      down:[],
+      creator_img:String,
     }],
+    creator_img: String
   }],
-  stared:[String]
+  stared:[String],
+
 
 
 

@@ -1,14 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .book-heading{
   margin-top:20px;
   padding-bottom: 10px;
+  padding-top:30px;
   width:100%;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   border-bottom: 1px solid black;
+  position:relative;
+
+}
+.book-overlay{
+  position: absolute;
+  width:100%;
+  height:100%;
+  background-color: rgba(255, 255, 255, 0.64);
 }
 .io{
   position:relative;
+  background-image: url(https://images.pexels.com/photos/206563/pexels-photo-206563.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);
+  background-position: center;
+  background-size: cover;
+  color:#000;
 }
 .title{
   display: flex;
@@ -16,12 +31,17 @@
   text-align: center;
   margin:auto;
   width:50%;
+  position:relative;
+  z-index: 2;
 }
+
 .book-content{
   display: flex;
   flex-direction: row;
   width:80%;
   margin:auto;
+  position:relative;
+  z-index: 2;
 }
 .book-content img{
   width:150px;
@@ -31,6 +51,15 @@
 .book-content .detail{
   padding-left: 20px;
   width:70%;
+  font-weight: bold
+}
+.star{
+  position:absolute;
+  right:50px;
+  top:20px;
+  font-size: 32px;
+  color:rgb(191, 191, 191);
+  cursor:pointer;
 }
 .vote{
   margin-top: 40px;
@@ -48,6 +77,9 @@
   display: flex;
   flex-direction: column;
 }
+.vote-option span{
+  margin:auto;
+}
 .comments{
   position: relative;
   margin:auto;
@@ -55,6 +87,52 @@
   width:80%;
   border:1px solid black;
 
+}
+.single-comment{
+  margin-bottom: 10px;
+  border-left:1px solid rgb(161, 161, 161);
+  border-top:1px solid rgb(161, 161, 161);
+  margin:3px;
+  margin-left: 40px;
+  padding:5px;
+  position:relative;
+}
+.reply{
+  margin:20px;
+  width:30%;
+  margin-left:50px;
+}
+.reply textarea{
+  width:300px;
+  height:50px;
+  outline: none;
+  border: 2px solid rgb(140, 206, 247);
+  font-size: 16px
+}
+.leave-res{
+  width:100px;
+  margin:10px;
+  background: rgb(0, 71, 116);
+  border:none;
+  border-radius: 10px;
+  padding:10px;
+  color:#FFF;
+}
+.cancle{
+  margin:auto;
+  border:none;
+  background:transparent;
+  font-size: 30px;
+  color:rgb(150, 0, 0);
+}
+.reply-button{
+  position:absolute;
+  right:80px;
+  top:50px;
+  background:transparent;
+  border:1px solid rgb(150, 0, 0);
+  color:rgb(150, 0, 0);
+  border-radius:5px;
 }
 .author{
   display: flex;
@@ -64,26 +142,59 @@
 .author img{
   width:60px;
   height: 60px;
-  margin-right: 40px;
+  margin-right: 2px;
+}
+.author h3{
+  font-family: 'Roboto', sans-serif;
+
 }
 .comment{
-  width:100%;
+  width:80%;
   padding:10px;
+  margin:auto;
+  font-size: 16px;
+  color:rgb(31, 31, 31);
+}
+.author-container{
+  width:100%;
+  margin:5px 10px 5px 0;
+  border-bottom: 1px solid rgb(161, 161, 161);
+
 }
 .response{
   width:60%;
-  border:1px solid black;
+  border:1px solid rgb(161, 161, 161);
   margin:auto;
+  margin-top:4px;
   position: relative;
 }
 .comments .vote{
   position:absolute;
   right:20px;
 }
-.star{
-  position:absolute;
-  right:50px;
-  top:20px;
-  font-size: 32px;
-  color:rgb(191, 191, 191);
+.add-comment{
+  width:50%;
+  margin:20px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background:#B2C7CC;
+}
+.add-comment textarea{
+  width:80%;
+  margin:15px auto;
+  outline:none;
+  border:none;
+  height:100px;
+  font-size: 16px;
+  color: #000000
+}
+.add-comment button{
+  width:150px;
+  margin:10px;
+  background: rgb(0, 71, 116);
+  border:none;
+  border-radius: 10px;
+  padding:10px;
+  color:#FFF;
 }
