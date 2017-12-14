@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  height:300px;
+  height:350px;
   z-index: 1;
   display: flex;
   flex-direction: row;
@@ -57,14 +57,34 @@
 .quote h1{
   font-size: 50px;
 }
+.quote button{
+  padding:5px;
+  width:70px;
+  background-color:#A94A49;
+  border: 0;
+  color:#000;
+  font-size: 14px;
+  font-weight:900;
+}
 .quote p{
   font-size: 20px;
   text-align: right;
 }
 .user i {
-  font-size: 18px;
+  font-size: 20px;
   margin:10px;
+  margin-top:60px;
   color:#FFF;
+}
+.edit-quote{
+  display: flex;
+  justify-content: space-between;
+  margin:auto;
+  margin-top:5px;
+}
+.edit-quote input{
+  width:250px;
+  color:#000;
 }
 /*SEARCH BOX*/
 .search-box{
@@ -73,6 +93,8 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  background:rgb(17, 115, 205);
+  color:#FFF;
 }
 .input{
   margin:auto;
@@ -81,6 +103,7 @@
   justify-content: center;
   width:40%;
   margin-top:20px;
+  margin-bottom:40px;
 }
 .input-book{
   background:rgb(170, 72, 72);
@@ -95,10 +118,22 @@
   width:40px;
   height:auto;
 }
-
+.input button{
+  background-color:#A94A49;
+  border: 0;
+  color:#000;
+  font-size: 14px;
+  font-weight:900;
+}
+/*book list*/
 
 .book-list{
+  width:100%;
+  margin:auto;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+
 }
 .book-list h2{
   margin: auto;
@@ -110,14 +145,23 @@
   display: flex;
   flex-direction: column;
 }
-
-.edit-quote{
-  display: flex;
-  justify-content: space-between;
+.list-container{
   margin:auto;
-  margin-top:5px;
+  width:100%;
+  display: flex;
+  justify-content: row;
+  flex-wrap: wrap;
 }
-.edit-quote input{
-  width:250px;
-  color:#000;
+
+.SIL{
+  width:20%;
+  display: flex;
+  flex-direction: column;
+  position:relative;
+  text-align: center;
+}
+.SIL img{
+  width:50%;
+  height:auto;
+  margin:auto;
 }

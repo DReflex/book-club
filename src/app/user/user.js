@@ -82,14 +82,14 @@ class User extends React.Component {
         {(this.props.searchBook.id) ? <ShowingBook />: null}
       </div>
       <div className="book-list">
-        <h2>My books</h2>
+        <h2>Starred books</h2>
         {
           star.length ? (
-            <div>
+            <div className="list-container">
               {
                 star.map((book, i)=>{
                   return (
-                    <div onClick={()=> this.props.history.push(`/book/${book.id}`)} key={i}>
+                    <div className="SIL" onClick={()=> this.props.history.push(`/book/${book.id}`)} key={i}>
                       <img alt={book.title} src={book.img} />
                       <h3>{book.title}</h3>
                     </div>

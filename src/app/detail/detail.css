@@ -178,7 +178,8 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background:#B2C7CC;
+  background:rgb(17, 115, 205);
+  color:#FFF;
 }
 .add-comment textarea{
   width:80%;

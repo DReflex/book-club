@@ -27,9 +27,7 @@ componentDidMount(){
   render(){
     let list = this.props.bookList
     return (
-      <div className="home">
-        <h1>This is Home</h1>
-        <div className="book-list">
+        <div className="all-books">
           {
             list ?
               (list.map((book, i) =>{
@@ -45,7 +43,6 @@ componentDidMount(){
           }
 
         </div>
-      </div>
     )
   }
 }
