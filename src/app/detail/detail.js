@@ -16,6 +16,8 @@ class Book extends React.Component {
     this.props.user.loginStatus? true : this.props.history.push('/')
   }
   componentDidMount(){
+    window.scrollTo(0, 1)
+    window.scrollTo(0,0)
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api/books/${id}`).then(res => res.json())
     .then((res)=>{

@@ -11,6 +11,8 @@ class User extends React.Component {
 
   }
   componentDidMount(){
+    window.scrollTo(0, 1)
+    window.scrollTo(0,0)
     this.props.dispatch(r_star())
     this.props.dispatch(resetBook())
     this.updateStars()

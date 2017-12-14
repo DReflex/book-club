@@ -207,12 +207,14 @@ button{outline:none}
 .tech-box{
   background-color: rgb(126, 126, 126);
   margin:auto;
-  width:33%;
+  width:30%;
   height:300px;
   position: relative;
   display: flex;
+  justify-content: space-around;
   position: relative;
   transition:1s ease;
+  margin-bottom:30px;
 }
 
 .box-desc{
@@ -236,8 +238,9 @@ button{outline:none}
   transition: 2s ease-out;
 }
 .tech-big{
-  width:50%;
+  width:40%;
   height:450px;
+  transition: 2s ease-out;
 }
 .popup{
   text-align: center;
