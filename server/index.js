@@ -52,12 +52,12 @@ app.use('/api2', require('./routes/api2'));
 //init app
 //build part of the react app
 //uncoment this after npm build
-/*app.use('/', express.static(path.join(__dirname, '../build')));
+  app.use('/', express.static(path.join(__dirname, '../build')));
 
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
-*/
+  app.get('/*', function (req, res) {
+      res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+
 //err
 app.use(function(err, req, res, next){
   //console.log(err);

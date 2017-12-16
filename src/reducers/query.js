@@ -1,5 +1,5 @@
 const stateInit ={
-  search:String
+  search:""
 }
 const query =(state = stateInit, action) => {
   switch(action.type){
