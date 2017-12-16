@@ -2,7 +2,11 @@ import React from 'react';
 import Login from './login';
 import smoothscroll from 'smoothscroll';
 import { connect } from 'react-redux';
+import {userLogin} from '../../actions/index';
+
 import './welcome.css'
+
+
 class Welcome extends React.Component {
   constructor(){
     super();
@@ -12,11 +16,12 @@ class Welcome extends React.Component {
     window.addEventListener('scroll', (e)=>this.handleScroll());
     window.scrollTo(0, 1)
     window.scrollTo(0,0)
+
   }
   componentWillUnmount() {
       document.removeEventListener("scroll", this.handleScroll);
   }
-  handleScroll(){
+  handleScroll = () =>{
     const icons = [...document.getElementsByClassName("icon-con")]
     function doSetTimeout(i, icon, string) {
       setTimeout(function() {
@@ -41,9 +46,67 @@ class Welcome extends React.Component {
     let connect = [...document.getElementsByClassName('connect-buttons')]
     button[0].className="connect button-animate"
     connect[0].className="connect-buttons connect-show"
-
   }
-  // add login to connect
+  handleTest = (type) =>{
+    const user1 ={
+      id: 12345,
+      img: "https://i.ebayimg.com/images/g/tZkAAOSw8lBToq0C/s-l300.jpg",
+      name: "Skrrr Pop Pop"
+    }
+    this.handleSocialLogin(user1)
+  }
+
+handleSocialLogin = (user) => {
+  fetch(`/api/user/${user.id}`)
+  .then((res) => {
+    if(res.status === 404){
+      fetch('/api/user', {
+                method: 'POST',
+                mode: 'CORS',
+                body: JSON.stringify({
+                  id: user.id,
+                  img:user.img,
+                  nickname: user.name
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        return undefined
+    }else{
+      return res
+    }
+  }).then((res) =>{
+    let data = {
+     id: user.id,
+     img:user.img,
+     nickname: user.name,
+     loginStatus: true
+   }
+    console.log(data);
+    if(res){
+      return res.json()
+    }else{
+      return data
+    }
+  })
+  .then((data) => {
+    let user = {
+      name:data.nickname,
+      id:data.id,
+      loginStatus: true,
+      img: data.img,
+      editing:false,
+      stared: data.stared,
+      author: data.author,
+      quote:data.quote,
+      background:data.background,
+    }
+     this.props.dispatch(userLogin(user))
+  }).then(()=>this.props.history.push('/home'))
+}
+
+
   render(){
     console.log("does it change", window.innerHeight);
     return (
@@ -54,7 +117,11 @@ class Welcome extends React.Component {
             <h1 className="header-h1">Welcome to Book Club</h1>
             <img className="tree" alt="tree" src="https://cdn.glitch.com/81770a35-1790-4efa-8f7a-c06945d590c2%2Fthumbnails%2Ftree-triangular-shape-with-roots%20(1).svg?1513079789794" />
             <button onClick={this.handleConnect} className="connect">Connect</button>
-            <div className="connect-buttons"> <Login /> <button className="btn-user">User1</button><button className="btn-user">User2</button></div>
+            <div className="connect-buttons">
+               <Login />
+               <button onClick={()=>this.handleTest("user1")} className="btn-user">User1</button>
+               <button className="btn-user">User2</button>
+               </div>
             <button onClick={()=>smoothscroll(window.innerHeight,1000)} className="learn">Learn more</button>
 
 
@@ -199,9 +266,9 @@ It works on every platform, browser or device, focusing equally on reliability a
     )
   }
 }
-const store = (store) =>{
+const store = (store, socket) =>{
   return {
-    user: store.user
+    user: store.user,
   }
 }
 

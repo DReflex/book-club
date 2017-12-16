@@ -17,11 +17,12 @@ import throttle from 'lodash/throttle'
  store.subscribe(throttle(()=>{
    saveState(store.getState());
  }, 1000));
-
+ 
 ReactDOM.render(
   <Provider store = {store}>
   <BrowserRouter><App/></BrowserRouter>
   </Provider>
   ,app
+
 )
 registerServiceWorker();

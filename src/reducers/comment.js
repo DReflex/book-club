@@ -2,21 +2,36 @@ const stateInit =[]
 const comment = (state= stateInit, action)=>{
   switch(action.type){
     case "COMMENT":
-    return[
-      ...state,
-      {
-      creator:action.creator,
-      creator_id:action.creator_id,
-      creator_img:action.creator_img,
-      response:action.response,
-      text:action.text,
-      _id:action._id,
-      up:action.up,
-      down:action.down,
-      vote: action.vote,
-      res_query:"",
-      showing:action.showing
-    }]
+//adding filter for sockets multiple
+    var ids = state.map(comment => comment._id)
+    if(ids){
+      if(ids.indexOf(action._id) == -1){
+        return[
+              ...state,
+              {
+              creator:action.creator,
+              creator_id:action.creator_id,
+              creator_img:action.creator_img,
+              response:action.response,
+              text:action.text,
+              _id:action._id,
+              up:action.up,
+              down:action.down,
+              vote: action.vote,
+              res_query:"",
+              showing:action.showing
+            }
+            ]
+      }else{
+        console.log("else in if");
+        return state
+      }
+    }else{
+      console.log("else");
+      return state
+
+    }
+
     case "RESET_COMMENT":
     return state=[];
     case "Q_RES":
@@ -55,7 +70,7 @@ const comment = (state= stateInit, action)=>{
             comment.response.map((response) =>{
               if(response._id === action.res_id){
                 response.vote = action.vote;
-                response.up = action.up,
+                response.up = action.up
                 response.down = action.down
                 return response
               }else{
@@ -75,8 +90,15 @@ const comment = (state= stateInit, action)=>{
     case "ADD_RES":
     return state.map((comment) => {
       if(comment._id === action.id){
-        comment.response.push(action.response)
-        return comment
+        //workaround for multiple emit calls
+        var ids = comment.response.map(res => res._id)
+        console.log(ids, "action", action.response._id);
+        if(ids.indexOf(action.response._id) === -1){
+          comment.response.push(action.response)
+          return comment
+        }else{
+          return comment
+        }
       }else{
         return comment
       }

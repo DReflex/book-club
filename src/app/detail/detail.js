@@ -5,12 +5,34 @@ import {
    detailBook, addComment, resetComment,
    q_comment, q_res, r_comment, r_res, res_toggle,
    shrink_detail, com_vote, add_res,star
- } from '../../actions/index'
+ } from '../../actions/index';
+ import { subscribeComment, subscribeResponse } from '../../actions/api'
+
+ import io from 'socket.io-client';
+ const socket = io('http://localhost:4000');
 
 class Book extends React.Component {
   constructor(){
     super();
     this.test_res = this.test_res.bind(this)
+      subscribeComment((err, data, id) => {
+        if(id === this.props.location.pathname.split('/')[2]){
+          console.log("this is comment data", data);
+           this.props.dispatch(addComment(data))
+        }else{
+          console.log("no data")
+        }
+      })
+      subscribeResponse((err, data, id,res_id) => {
+        if(id === this.props.location.pathname.split('/')[2]){
+          this.props.dispatch(add_res(res_id, data))
+        }
+        else{
+          console.log("no response");
+        }
+      })
+
+
   }
   componentWillMount(){
     this.props.user.loginStatus? true : this.props.history.push('/')
@@ -18,7 +40,6 @@ class Book extends React.Component {
   componentDidMount(){
     window.scrollTo(0, 1)
     window.scrollTo(0,0)
-
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api/books/${id}`).then(res => res.json())
     .then((res)=>{
@@ -45,6 +66,7 @@ class Book extends React.Component {
        data[0].comments.map(comment => this.props.dispatch(addComment(comment)))
      })
   }
+
   handleComments = () =>{
     var user = this.props.user
     var id = this.props.location.pathname.split('/')[2]
@@ -66,10 +88,15 @@ class Book extends React.Component {
           'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .then(comment => this.props.dispatch(addComment(comment)))
+    .then((comment) => {
+      //dispatch
+      socket.emit("comment", comment, id)
+      // this.props.dispatch(addComment(comment))
+    })
     this.props.dispatch(r_comment())
   }
   test=(id, text)=>{
+    var pathId = this.props.location.pathname.split('/')[2]
     var user = this.props.user
     fetch(`/api/test/${id}`,{
       method: 'PUT',
@@ -91,7 +118,9 @@ class Book extends React.Component {
     }).then(res => res.json())
       .then((response) => {
         let Res = response[response.length -1]
-        this.props.dispatch(add_res(id, Res))
+        //dispatch
+        socket.emit("response", Res, pathId, id)
+          // this.props.dispatch(add_res(id, Res))
         return this.props.dispatch(r_res(id))
       })
 
@@ -337,7 +366,7 @@ const store = (store)=>{
     detailBook: store.detailBook,
     comment: store.comment,
     user: store.user,
-    input: store.input
+    input: store.input,
   }
 }
 Book = connect(store)(Book)

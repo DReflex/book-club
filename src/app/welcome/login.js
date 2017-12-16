@@ -1,7 +1,7 @@
 import SocialButton from './login-div';
 import React from 'react';
 import { connect } from 'react-redux'
-import {userLogin} from '../../actions/index';
+import { userLogin } from '../../actions/index';
 import { withRouter } from 'react-router'
 
 
