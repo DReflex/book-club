@@ -19,7 +19,7 @@ class Navbar extends React.Component{
   handleScroll = () =>{
     let navbar = document.getElementById('navbar')
 
-    if(this.props.location.pathname != "/"){
+    if(this.props.location.pathname !== "/"){
       navbar.className= "navbar navbar-default navbar-rolling"
     }else{
       if(window.pageYOffset > window.innerHeight -250){
@@ -38,7 +38,7 @@ class Navbar extends React.Component{
         <div className="container-fluid">
           <Colapse />
 
-            <ul className="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav navbar-right xs-hide">
               <li className="link"> <Link to="/home"><i className="fa fa-home" aria-hidden="true"></i>Home</Link> </li>
               <li className="link"> <Link to="/user"><i className="fa fa-pie-chart" aria-hidden="true"></i>User</Link></li>
               <li className="link"> <Logout/></li>

@@ -5,7 +5,7 @@ const comment = (state= stateInit, action)=>{
 //adding filter for sockets multiple
     var ids = state.map(comment => comment._id)
     if(ids){
-      if(ids.indexOf(action._id) == -1){
+      if(ids.indexOf(action._id) === -1){
         return[
               ...state,
               {

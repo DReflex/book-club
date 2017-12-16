@@ -61,6 +61,11 @@
   color:rgb(191, 191, 191);
   cursor:pointer;
 }
+
+/*
+  comments starts here
+*/
+
 .vote{
   margin-top: 40px;
   margin-right: 5px;
@@ -198,4 +203,59 @@
   border-radius: 10px;
   padding:10px;
   color:#FFF;
+}
+/*
+  Media query
+
+*/
+
+@media screen and (max-width:720px) {
+  .book-content{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title{
+    width:70%;
+    margin:auto;
+  }
+  .book-content img{
+    margin:auto;
+  }
+  .book-content .detail{
+    width:90%;
+    margin:auto;
+  }
+  .io{
+    background-image: url(https://images.unsplash.com/photo-1479265245989-4f95d108758c?auto=format&fit=crop&w=634&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+  }
+  .add-comment{
+    width:100%;
+    margin-bottom: 0;
+    padding-bottom:40px;
+  }
+  .comments{
+    width:100%;
+    border:none;
+  }
+  .single-comment{
+    margin-left: 10px;
+  }
+  .response{
+    width:90%;
+  }
+  .reply{
+    width:100%;
+    margin:5px;
+  }
+  .reply textarea{
+    width:250px;
+    margin:auto;
+  }
+  .star{
+    right:20px;
+  }
+  .star i{
+    color:rgb(60, 60, 60)
+  }
 }

@@ -8,7 +8,7 @@ body, html{
   margin-bottom: 0;
   z-index: 10;
   width:100%;
-  height:50px;
+  min-height: 50px;
   border-radius: 0;
   background:rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -131,9 +131,23 @@ body, html{
 .colapse-overlay{
   position:absolute;
   display: none;
-  margin-top:50px;
   width:100%;
   height:100%;
   z-index: 1;
   background-color: rgba(19, 0, 0, 0.9);
+}
+@media screen and (max-width:760px) {
+  .menu{
+    margin-top:0;
+  }
+  .xs-hide{
+    display:none;
+  }
+  #xs-colapse{
+    display:flex;
+  }
+  #xs-colapse ul{
+    display:flex;
+    flex-direction: column;
+  }
 }

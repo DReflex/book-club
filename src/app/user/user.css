@@ -81,6 +81,7 @@
   justify-content: space-between;
   margin:auto;
   margin-top:5px;
+
 }
 .edit-quote input{
   width:250px;
@@ -165,4 +166,37 @@
   width:50%;
   height:auto;
   margin:auto;
+}
+@media screen and (max-width: 760px) {
+  .edit-quote{
+    flex-direction: column;
+  }
+  .edit-quote input{
+    width:150px;
+    margin:auto;
+  }
+  .edit-quote h3{
+    font-size: 16px;
+  }
+  .user-info{
+    width:50%;
+  }
+  .user-info img{
+    width:50%;
+  }
+  .edit-quote label{
+    text-align: center;
+  }
+  .quote button{
+    margin:5px;
+  }
+  .user i{
+    margin-left:0;
+  }
+  .input{
+    width:90%;
+  }
+  .SIL{
+    width:30%;
+  }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect }from 'react-redux';
 import { addStar, r_star} from '../../actions/index';
 import { Link } from 'react-router-dom';
+import Logout from './logout';
 
 
 import './navbar.css'
@@ -16,10 +17,10 @@ class Colapse extends React.Component{
     var overlay = document.getElementById(item2)
     if(toglle.style.display !== 'block'){
       toglle.style.display = 'block'
-      overlay? (overlay.style.display = 'block'): undefined
+      overlay? overlay.style.display = 'block': undefined
     }else {
       toglle.style.display = 'none'
-      overlay? (overlay.style.display = 'none'): undefined
+      overlay? overlay.style.display = 'none': undefined
 
     }
 
@@ -60,6 +61,14 @@ class Colapse extends React.Component{
             <div className="name-container">
               <h3>{this.props.user.name}</h3>
             </div>
+          </div>
+          <div id="xs-colapse" className="list">
+            <ul className="reading">
+              <li><Link to="/home"><i className="fa fa-home" aria-hidden="true"></i>Home</Link></li>
+                <li> <Link to="/user"><i className="fa fa-pie-chart" aria-hidden="true"></i>User</Link></li>
+                <li><Link to="/"><i className="fa fa-info" aria-hidden="true"></i>Info</Link></li>
+                <li> <Logout/></li>
+            </ul>
           </div>
           <div className="list">
             <h4>Reading list </h4><i onClick={()=> this.handleToggle('reading-list')} className="fa fa-plus-square" aria-hidden="true"></i>

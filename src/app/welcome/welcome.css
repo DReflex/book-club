@@ -32,7 +32,16 @@ button{outline:none}
   margin:0;
   padding:0;
   width:45px;
-  hieght:45px;
+  height:45px;
+}
+.tree{
+  width:20%;
+  height:auto;
+  margin:auto;
+  animation-name: tree, fadeIn;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
 }
 .welcome-body{
   margin:auto;
@@ -42,7 +51,7 @@ button{outline:none}
   margin-top:0;
   position:relative;
   width:100%;
-  height:800px;
+  height:auto;
   /*dinamic height*/
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/5d/88/65/5d8865f7c9e2cb4436c69db0ac816637.jpg);
   background-position: bottom;
@@ -55,6 +64,7 @@ button{outline:none}
   background: radial-gradient(farthest-corner at 150px 30px, transparent, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
 
 }
+
 .welcome-home{
   width:100%;
   display: flex;
@@ -119,15 +129,11 @@ button{outline:none}
   color:#FFF;
   border:5px solid #FFF;
 }
-.tree{
-  width:20%;
-  height:auto;
-  margin:auto;
-  animation-name: tree, fadeIn;
-  animation-duration: 4s;
-  animation-fill-mode: both;
-  animation-delay: 1s;
-}
+/*
+//
+//
+//detail content start*/
+
 .welcome-detail{
   margin-top:100px;
 }
@@ -189,6 +195,11 @@ button{outline:none}
   height:auto;
   margin: auto;
 }
+/*
+
+//Techonology starts here
+
+*/
 .techonology{
   width:100%;
   margin:auto;
@@ -363,4 +374,75 @@ button{outline:none}
     transform: translate(200px);
   }
   100%{height:50px;display: block;transform:translate(0); opacity:1;}
+}
+/*
+  css media query
+
+*/
+@media screen and (max-width:720px) {
+  .header-h1{
+    font-size: 32px;
+  }
+  .connect, .learn{
+    width:150px;
+    font-size:20px;
+    border-width: 3px;
+    padding:5px;
+    margin-top: 40px;
+    z-index: 2;
+  }
+  .loginButton img{
+    width:30px;
+    height:30px;
+    margin:auto;
+  }
+  .loginButton, .btn-user{
+    width:75px;
+    padding:5px;
+  }
+  .tree{
+    width:40%;
+  }
+  .icon-con{
+    width:40%;
+  }
+  .image{
+    width: 70px;
+    height: 70px;
+  }
+  .icon-con p{
+    font-size: 14px
+  }
+  .w-heading{
+    width:90%;
+    margin:auto;
+    margin-bottom: 10px;
+  }
+  .w-heading h1{
+    font-size: 32px;
+    margin:auto;
+  }
+  .tech-box{
+    width:50%;
+    margin:auto;
+  }
+  .tech-big{
+    width:70%;
+    margin:auto;
+    height:350px;
+  }
+  .popup h1{
+    font-size: 25px;
+  }
+  .popup p{
+    margin-top:10px;
+    width:100%;
+    font-size: 14px;
+    text-align: left;
+    padding-left:5px;
+  }
+  .box-desc h4{
+    font-size: 20px;
+  }
+
 }

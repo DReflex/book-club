@@ -35,8 +35,8 @@ class Welcome extends React.Component {
         }
 
     }else {
-      for (var i = 0; i < icons.length; i++) {
-      doSetTimeout(i, icons[i], "")
+      for (var j = 0; j < icons.length; j++) {
+      doSetTimeout(j, icons[j], "")
 
       }
     }

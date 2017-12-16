@@ -17,7 +17,7 @@ class Book extends React.Component {
     this.test_res = this.test_res.bind(this)
       subscribeComment((err, data, id) => {
         if(id === this.props.location.pathname.split('/')[2]){
-          console.log("this is comment data", data);
+          console.log("this is comment");
            this.props.dispatch(addComment(data))
         }else{
           console.log("no data")
@@ -246,7 +246,7 @@ class Book extends React.Component {
     let input= this.props.input
     let detail = this.props.detailBook
     let comments = this.props.comment
-    let color = (this.props.user.stared.indexOf(this.props.location.pathname.split('/')[2]) === -1)? "rgb(191, 191, 191)": "rgb(255, 177, 4)"
+    let color = (this.props.user.stared.indexOf(this.props.location.pathname.split('/')[2]) === -1)? "rgb(97, 97, 97)": "rgb(255, 177, 4)"
     return (
       (!detail.desc || !comments)? "loading":(
       <div className="book-detail">
@@ -256,7 +256,7 @@ class Book extends React.Component {
                 <div className="book-overlay"></div>
             <div className="title">
               <h2>{detail.title}</h2>
-              <h2>: {detail.subtitle}</h2>
+              <h2 className="hide">: {detail.subtitle}</h2>
             </div>
             <div className="book-content">
               <img width="150px" src={detail.img} alt="#_#" />
@@ -323,7 +323,7 @@ class Book extends React.Component {
                           </div>
                         </div>
                         <div className="author">
-                          <img src={res.creator_img} alt="profile" />
+                          <img className="xs-hide" src={res.creator_img} alt="profile" />
                           <h3>{res.creator}</h3>
                         </div>
                         <div className="comment">
