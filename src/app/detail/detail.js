@@ -9,7 +9,7 @@ import {
  import { subscribeComment, subscribeResponse } from '../../actions/api'
 
  import io from 'socket.io-client';
- const socket = io('http://localhost:4000');
+ const socket = io();
 
 class Book extends React.Component {
   constructor(){
@@ -245,7 +245,6 @@ class Book extends React.Component {
   render(){
     let input= this.props.input
     let detail = this.props.detailBook
-    console.log(detail.desc);
     let comments = this.props.comment
     let color = (this.props.user.stared.indexOf(this.props.location.pathname.split('/')[2]) === -1)? "rgb(97, 97, 97)": "rgb(255, 177, 4)"
     return (
