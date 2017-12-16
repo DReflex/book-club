@@ -5,7 +5,7 @@ const stateInit ={
   author:String,
   categories:String,
   link:String,
-  desc:String,
+  desc:"",
   shrink:true
 }
 const detailBook = (state= stateInit, action)=>{
