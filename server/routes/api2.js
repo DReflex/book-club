@@ -39,7 +39,6 @@ router.put('/comment/:id' ,function(req, res, next){
     user.save()
     return user
   }).then(function(user){
-    console.log("this is user stars",user.stared);
     res.send(user.stared)
   }).catch(next)
 

@@ -10,7 +10,8 @@ const socket = require('socket.io')
 
 const app =express();
 app.set('port', (process.env.PORT || 4000));
-var promise = mongoose.connect('mongodb://localhost/book-club', {
+var mlab ="mongodb://book-club:password@ds059546.mlab.com:59546/book-club"
+var promise = mongoose.connect(mlab, {
   useMongoClient: true,
   /* other options */
 });

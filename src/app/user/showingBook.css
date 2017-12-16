@@ -5,6 +5,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
+  padding-bottom: 20px;
 }
 .showing{
   display: flex;
@@ -12,4 +13,21 @@
   justify-content: flex-start;
   margin-left:10px;
   text-align: left;
+}
+.showing a{
+  padding:2px;
+  color:#FFF;
+}
+.showing .input-search{
+  max-width:200px;
+  padding:5px;
+}
+@media screen and (max-width: 720px) {
+  .showing-container{
+    flex-direction:column;
+  }
+  .showing-container img{
+    width:50%;
+    height:auto;
+  }
 }

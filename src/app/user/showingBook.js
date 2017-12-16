@@ -44,10 +44,7 @@ class ShowingBook extends React.Component{
           <h2>{showing.title}</h2>
           <h5>{showing.author}</h5>
           <a target="_blank" href={showing.link}>{showing.title}</a>
-          <div className="showing-buttons">
-            <button onClick={this.handleSubmit}>add to server</button>
-            <button>add to reading list</button>
-          </div>
+            <button className="input-search" onClick={this.handleSubmit}>add to server</button>
         </div>
       </div>
     )

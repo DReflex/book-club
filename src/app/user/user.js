@@ -47,9 +47,9 @@ class User extends React.Component {
   }
   updateStars = () =>{
     let user = this.props.user
-    if(user.stared){
+    if(user.stared[0]){
       user.stared.map((id) =>{
-        fetch(`api2/books/${id}`).then(res => res.json())
+        fetch(`/api2/books/${id}`).then(res => res.json())
         .then((book) =>{
          let data = {
            id:book.id,
