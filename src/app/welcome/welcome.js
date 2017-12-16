@@ -52,8 +52,14 @@ class Welcome extends React.Component {
       id: 12345,
       img: "https://i.ebayimg.com/images/g/tZkAAOSw8lBToq0C/s-l300.jpg",
       name: "Skrrr Pop Pop"
-    }
-    this.handleSocialLogin(user1)
+    };
+    const user2 ={
+      id: 54321,
+      img: "http://www.abc.net.au/news/image/3742030-1x1-940x940.jpg",
+      name: "Skibidi Pa PA"
+    };
+    (type === "user1") ? this.handleSocialLogin(user1):this.handleSocialLogin(user2)
+
   }
 
 handleSocialLogin = (user) => {
@@ -83,7 +89,6 @@ handleSocialLogin = (user) => {
      nickname: user.name,
      loginStatus: true
    }
-    console.log(data);
     if(res){
       return res.json()
     }else{
@@ -108,7 +113,6 @@ handleSocialLogin = (user) => {
 
 
   render(){
-    console.log("does it change", window.innerHeight);
     return (
       <div>
         <div style={{height:window.innerHeight}} className="welcome-body">
@@ -120,7 +124,7 @@ handleSocialLogin = (user) => {
             <div className="connect-buttons">
                <Login />
                <button onClick={()=>this.handleTest("user1")} className="btn-user">User1</button>
-               <button className="btn-user">User2</button>
+               <button onClick={()=> this.handleTest("user2")} className="btn-user">User2</button>
                </div>
             <button onClick={()=>smoothscroll(window.innerHeight,1000)} className="learn">Learn more</button>
 

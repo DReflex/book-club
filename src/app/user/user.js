@@ -10,11 +10,19 @@ class User extends React.Component {
     this.props.user.loginStatus? true : this.props.history.push('/')
 
   }
+  constructor(props){
+    super(props)
+    this.dispatchUpdate= this.dispatchUpdate.bind(this)
+  }
   componentDidMount(){
     window.scrollTo(0, 1)
     window.scrollTo(0,0)
-    this.props.dispatch(r_star())
     this.props.dispatch(resetBook())
+    //preventing doubling redux
+    setTimeout(() => this.dispatchUpdate(), 10)
+  }
+  dispatchUpdate = () =>{
+    this.props.dispatch(r_star())
     this.updateStars()
   }
   bookSearch=()=>{
@@ -34,13 +42,11 @@ class User extends React.Component {
         selfLink: book.selfLink
       }
       this.props.dispatch(searchBook(bookData))
-      console.log("this is book data", bookData);
       this.props.dispatch(resetQuery())
     })
   }
   updateStars = () =>{
     let user = this.props.user
-    console.log(this.props.user);
     if(user.stared){
       user.stared.map((id) =>{
         fetch(`api2/books/${id}`).then(res => res.json())
