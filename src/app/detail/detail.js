@@ -72,7 +72,6 @@ class Book extends React.Component {
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api/comment/${id}`,{
       method: 'PUT',
-      mode: "CORS",
       body: JSON.stringify({
       comments:{
         creator:user.name,
@@ -100,7 +99,6 @@ class Book extends React.Component {
     var user = this.props.user
     fetch(`/api/test/${id}`,{
       method: 'PUT',
-      mode: 'CORS',
       body: JSON.stringify({
         response:{
           creator:user.name,
@@ -183,7 +181,6 @@ class Book extends React.Component {
     function update_vote(up, down, vote){
       fetch('/api/test_res', {
         method: "PUT",
-        mode:"CORS",
         body:JSON.stringify({
           vote: vote,
           up: up,
@@ -203,7 +200,6 @@ class Book extends React.Component {
     var op = Promise.resolve(
       fetch('/api/vote', {
         method:'PUT',
-        mode:"CORS",
         body:JSON.stringify({
           res_id,
           com_id
@@ -234,7 +230,6 @@ class Book extends React.Component {
     var id = this.props.location.pathname.split('/')[2]
     fetch(`/api2/comment/${id}`,{
       method:"PUT",
-      mode: "CORS",
       body: JSON.stringify({id: this.props.user.id}),
       headers:{
         'Content-Type': "application/json"

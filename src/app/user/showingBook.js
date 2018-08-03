@@ -9,7 +9,6 @@ class ShowingBook extends React.Component{
     console.log("this is props", book);
     fetch('/api/books',{
       method: 'POST',
-      mode: 'CORS',
       body: JSON.stringify({
         id:book.id,
         title: book.title,
@@ -22,7 +21,6 @@ class ShowingBook extends React.Component{
     }).then(()=>{
       fetch('api/comment',{
         method: 'POST',
-        mode: 'CORS',
         body: JSON.stringify({
           id:book.id,
           title: book.title,

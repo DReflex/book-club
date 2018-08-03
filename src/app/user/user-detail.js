@@ -5,7 +5,8 @@ import {toggleProfile } from '../../actions/index'
 class UserDetail extends React.Component{
   render(){
     let user = this.props.user
-    let url = user.background? user.background : "http://cdn.pcwallart.com/images/city-road-background-wallpaper-1.jpg"
+    console.log(this.props.user);
+    let url = user.background? user.background : "https://images.unsplash.com/photo-1533201599223-1a45243c9702?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=41cdfa444432255200621f1d666cbdd6&auto=format&fit=crop&w=1350&q=80"
     let background = {
       "backgroundImage": `url(${url})`,
     }

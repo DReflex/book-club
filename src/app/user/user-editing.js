@@ -46,7 +46,6 @@ class UserEditing extends React.Component{
     this.props.dispatch(updateProfile(data))
     fetch(`/api2/user/${user.id}`,{
       method: 'PUT',
-      mode: "CORS",
       body: JSON.stringify({
         data: data
       }),
